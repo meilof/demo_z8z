@@ -2,7 +2,7 @@
 use crate::zqz;
 use crate::PARAMS;
 use concrete::crypto_api;
-use std::rc::Rc;
+use std::sync::Arc;
 
 const SECRET_FILE: &str = "secret_key.json";
 const BOOTSTRAPPING_FILE: &str = "bootstrapping_key.txt";
@@ -20,7 +20,7 @@ pub struct HomomorphicKey {
 #[derive(Debug, PartialEq)]
 pub struct EncryptKey {
     pub(super) secret: crypto_api::LWESecretKey,
-    pub(super) evaluation: Rc<HomomorphicKey>,
+    pub(super) evaluation: Arc<HomomorphicKey>,
 }
 
 impl EncryptKey {
@@ -60,7 +60,7 @@ impl EncryptKey {
 
         EncryptKey {
             secret: lwe_sk,
-            evaluation: Rc::new(hk),
+            evaluation: Arc::new(hk),
         }
     }
 
@@ -84,7 +84,7 @@ impl EncryptKey {
 
         EncryptKey {
             secret: lwe_sk,
-            evaluation: Rc::new(hk),
+            evaluation: Arc::new(hk),
         }
     }
 
@@ -122,7 +122,7 @@ impl EncryptKey {
         };
         EncryptKey {
             secret: secret_key,
-            evaluation: Rc::new(hk),
+            evaluation: Arc::new(hk),
         }
     }
 

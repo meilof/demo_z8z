@@ -1,1 +1,6 @@
 target/
+.DS_Store
+__pycache__/*
+Cargo.lock
+keys/*
+rlwe_*

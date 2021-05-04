@@ -20,8 +20,8 @@ const PARAMS: zqz::Parameters = new_parameters!(4, 2, 7, 3, 2, 7, RLWE128_2048_1
 const PARAMS: zqz::Parameters = new_parameters!(3, 2, 7, 3, 2, 7, RLWE128_1024_1, LWE128_750, true);
 
 fn main() {
-    let reader = std::io::stdin();
-    let mut reader_buffer = String::new();
+    //let reader = std::io::stdin();
+    //let mut reader_buffer = String::new();
 
     // Generating / Loading keys
     measure_duration!("1. Key Loading...",[
@@ -33,7 +33,7 @@ fn main() {
             EncryptKey::load_from_files(&PARAMS.gen_prefix())
         };
     ]);
-    reader.read_line(&mut reader_buffer).unwrap();
+    //reader.read_line(&mut reader_buffer).unwrap();
 
     // Encryption
     measure_duration!("2. Encryption... ",[
@@ -67,7 +67,7 @@ fn main() {
         s_res.blue().bold()
     );
 
-    reader.read_line(&mut reader_buffer).unwrap();
+    //reader.read_line(&mut reader_buffer).unwrap();
 
     // Max computation
     measure_duration!("5. Max computation: max(4,7)... ", [
@@ -87,7 +87,7 @@ fn main() {
     );
     println!("-> Output (should be 7): {}", s_res.blue().bold());
 
-    reader.read_line(&mut reader_buffer).unwrap();
+    //reader.read_line(&mut reader_buffer).unwrap();
 
     // Function evaluation
     measure_duration!("7. Function evaluation f(x)=x^3 with x=5... ", [

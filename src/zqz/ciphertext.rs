@@ -3,7 +3,7 @@ use crate::zqz;
 use crate::PARAMS;
 use concrete::crypto_api;
 use std::ops::{Add, AddAssign, Mul, MulAssign, Sub, SubAssign};
-use std::rc::Rc;
+use std::sync::Arc;
 use zqz::keys::HomomorphicKey;
 use zqz::max::Max;
 
@@ -11,7 +11,7 @@ use zqz::max::Max;
 #[derive(Debug, Clone, PartialEq)]
 pub struct Ciphertext {
     pub(super) ciphertext: crypto_api::LWE,
-    pub(super) evaluation_key: Rc<HomomorphicKey>,
+    pub(super) evaluation_key: Arc<HomomorphicKey>,
 }
 
 fn bs_ks<F: Fn(f64) -> f64>(

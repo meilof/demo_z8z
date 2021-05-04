@@ -15,6 +15,17 @@ edition = "2018"
 z8z-ks=[]
 z16z-ks=[]
 
+[lib]
+name = "pyz8z"
+crate-type = ["cdylib"]
+
+[dependencies.cpython]
+version = "0.5"
+features = ["extension-module"]
+
 [dependencies]
-concrete="^0.1"
+concrete="=0.1.5"
 colored="2.0.0"
+
+#[dependencies.concrete]
+#path = "../concrete"
